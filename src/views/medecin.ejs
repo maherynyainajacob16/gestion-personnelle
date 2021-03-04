@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css"> 
+        <link rel="stylesheet" href="/css/bootstrap.css"> 
+        
+        <link rel="stylesheet" href="/css/bootstrap.min.css"> 
+    </head>
+
+    <body>
+        <nav class="navbar navbar-dark bg-dark">
+            <a href="/" class="navbar-brand"> Medecin</a>
+            <a href="/patient" class="navbar-brand">Patient</a>
+            <a href="/traitement" class="navbar-brand">Traitement</a>
+            <a href="/autre" class="navbar-brand">Prestation</a>  
+        </nav>
+        <div class="container">
+            <table class="table table-berdered table-hover">
+                <thead>
+                    <tr>
+                        <th>IdMedecin</th>
+                        <th>Numero Medecin</th>
+                        <th>Nom Medecin</th>
+                        <th>Taux jour</th>
+                        <th>action</th>
+                   
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (data) { %>
+                        <% for(var i =0;i <data.length; i++){ %>
+                            <tr>
+                                <td><%= (i + 1) %> </td>
+                                <td><%= data[i].numMed %> </td>
+                                <td><%= data[i].nomMed %> </td>
+                                <td><%= data[i].tauxJour %> </td>
+                                <td>
+                                    <a href="/delete/<%= data[i].idMed %>" class="btn btn-danger">Delete</a>
+                                    <a href="/update/<%= data[i].idMed %>" class="btn btn-info"> Update</a>
+                                </td>
+                            
+                            </tr>
+                        <% } %>
+                    <% } %>
+                </tbody>
+
+            </table>
+
+            <form action="/add" method="post">
+                <div class="form-group">
+                    <input type="text" name="numMed" placeholder="NumMedecin" class="form-control">
+
+                </div>
+                <div class="form-group">
+                    <input type="text" name="nomMed" placeholder="NomMedecin" class="form-control">
+
+                </div>
+                <div class="form-group">
+                    <input type="number" name="tauxJour" placeholder="TauxJour" class="form-control">
+
+                </div>
+                <button type="submit" class="btn btn-success">Enregistrement</button>
+            </form>
+            <script src="main.js"></script>
+
+        </body>
+        </html>

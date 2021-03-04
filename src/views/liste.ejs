@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/css/bootstrap.min.css"> 
+        <link rel="stylesheet" href="/css/bootstrap.css"> 
+        <script src="/javaScript/recherche.js"></script>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-dark bg-dark">
+            <a href="/" class="navbar-brand"> Medecin</a>
+            <a href="/patient" class="navbar-brand">Patient</a>
+            <a href="/traitement" class="navbar-brand">Traitement</a>
+            <a href="/autre" class="navbar-brand">Prestation</a>            
+            <a href="/liste" class="navbar-brand">Liste</a>
+        </nav>
+       
+        <div class="container">
+            <!--
+            <form action="/autre/etatPrest/:date " method="post">-->
+            <form action="/autre/etatPrest/" method="post">
+               
+                <div class="form-group">
+                    <form action=""></form>
+                    <label >Année :</label>
+                    <input type="date" id="date" name="date"  class="form-control-sm">
+                    <button  type="submit" onclick="prestation()" class="btn btn-primary">Search</button>
+                </div>
+                
+            </form>
+              
+            <script>
+                    
+            </script> 
+            <table class="table table-berdered table-hover">
+                <thead>
+                    <tr>  
+                        <th>N° Prestation</th>                      
+                        <th>Numero Medecin</th>
+                        <th>Nom Medecin</th>
+                        <th>Prestation(en Ar)</th>                      
+                   
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (data) { %>
+                        <% for(var i =0;i <data.length; i++){ %>
+                            <tr>
+                                <td><%= (i + 1) %> </td>
+                                <td><%= data[i].numMed %> </td>
+                                <td><%= data[i].nomMed %> </td>
+                                <td><%= data[i].prestation %> </td>
+                                                           
+                            </tr>
+                        <% } %>
+                    <% } %>
+                    
+                </tbody>
+
+            </table>
+            
+
+        </div>
+
+        </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="./assets/css/bootstrap.min.css"> 
+        <link rel="stylesheet" href="/css/bootstrap.css"> 
+    </head>
+
+    <body>
+        <nav class="navbar navbar-dark bg-dark">
+            <a href="/" class="navbar-brand"> Medecin</a>
+            <a href="/patient" class="navbar-brand">Patient</a>
+            <a href="/traitement" class="navbar-brand">Traitement</a>
+            <a href="/autre" class="navbar-brand">Prestation</a>     
+        </nav>
+        <div class="container">
+            <table class="table table-berdered table-hover">
+                <thead>
+                    <tr>
+                        <th>IdPatinet</th>
+                        <th>Numero Patient</th>
+                        <th>Nom Patient</th>
+                        <th>adresse</th>
+                        <th>action</th>
+                   
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (data) { %>
+                        <% for(var i =0;i <data.length; i++){ %>
+                            <tr>
+                                <td><%= (i + 1) %> </td>
+                                <td><%= data[i].numPatient %> </td>
+                                <td><%= data[i].nomPatient %> </td>
+                                <td><%= data[i].adress %> </td>
+                                <td>
+                                    <a href="/patient/deleteP/<%= data[i].idPatient %>" class="btn btn-danger">Delete</a>
+                                    <a href="/patient/updateP/<%= data[i].idPatient %>" class="btn btn-info"> Update</a>
+                                </td>
+                            
+                            </tr>
+                        <% } %>
+                    <% } %>
+                </tbody>
+
+            </table>
+
+            <form action="/patient/addP" method="post">
+               
+                <div class="form-group">
+                    <input type="text" name="nomPatient" placeholder="NomPatient" class="form-control">
+
+                </div>
+                <div class="form-group">
+                    <input type="text" name="adress" placeholder="Adresse" class="form-control">
+
+                </div>
+                <div class="form-group">
+                    <input type="text" name="numPatient" placeholder="NumPatient" class="form-control">
+
+                </div>
+                <button type="submit" class="btn btn-primary">Enregistrement</button>
+            </form>
+
+        </body>
+        </html>

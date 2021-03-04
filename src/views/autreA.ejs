@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/css/bootstrap.min.css"> 
+        <link rel="stylesheet" href="/css/bootstrap.css"> 
+    </head>
+
+    <body>
+        <nav class="navbar navbar-dark bg-dark">
+            <a href="/" class="navbar-brand"> Medecin</a>
+            <a href="/patient" class="navbar-brand">Patient</a>
+            <a href="/traitement" class="navbar-brand">Traitement</a>
+            <a href="/autre" class="navbar-brand">Autres</a>
+        </nav>
+       
+        <div class="container">
+            <!--
+            <form action="/autre/etatPrest/:date " method="post">-->
+            <form action="/autre/etatPrest/" method="post">
+               
+                <div class="form-group">
+                    <form action=""></form>
+                    <label >Année :</label>
+                    <input type="date" id="date" name="date"  class="form-control-sm">
+                    <button  type="submit" onclick="myFunction()" class="btn btn-primary">Search</button>
+                </div>
+                
+            </form>
+            
+                     
+            <p id="demo"></p>    
+          
+          <table class="table table-berdered table-hover">
+                <thead>
+                    <tr>  
+                        <th>N° Prestation</th>                      
+                        <th>Numero Medecin</th>
+                        <th>Nom Medecin</th>
+                        <th>Prestation(en Ar)</th>                      
+                   
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (draaa) { %>
+                        <% for(var i =0;i <draaa.length; i++){ %>
+                            <tr>
+                                <td><%= (i + 1) %> </td>
+                                <td><%= draaa[i].numMed %> </td>
+                                <td><%= draaa[i].nomMed %> </td>
+                                <td><%= draaa[i].tauxJour %> </td>                    
+                            </tr>
+                        <% } %>
+                    <% } %> 
+                  
+                </tbody>
+
+            </table>
+
+
+        <script src="/css/jquery.min.js"></script>
+        <script src="/css/bootstrap.min.js"></script>
+        
+        </body>
+</html>

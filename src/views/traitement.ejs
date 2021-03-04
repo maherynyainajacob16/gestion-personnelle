@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/css/bootstrap.min.css"> 
+        <link rel="stylesheet" href="/css/bootstrap.css"> 
+    </head>
+
+    <body>
+        <nav class="navbar navbar-dark bg-dark">
+            <a href="/" class="navbar-brand"> Medecin</a>
+            <a href="/patient" class="navbar-brand">Patient</a>
+            <a href="/traitement" class="navbar-brand">Traitement</a>
+            <a href="/autre" class="navbar-brand">Prestation</a>  
+        </nav>
+      
+        <div class="container">
+            <table class="table table-berdered table-hover">
+                <thead>
+                    <tr>
+                        <th>IdTraitement</th>
+                        <th>Numero Patient</th>
+                        <th>Numero Medecin</th>
+                        <th>Nombre du jours</th>                        
+                        <th>Date de consultation</th>
+                        <th>Action</th>
+                   
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (data) { %>
+                        <% for(var i =0; i <data.length; i++) { %>
+                            <tr>
+                                <td><%= (i + 1) %> </td>
+                                <td><%= data[i].numPatient %> </td>
+                                <td><%= data[i].numMed %> </td>
+                                <td><%= data[i].nbJour %> </td>
+                                <td><%= data[i].dateConsultation %> </td>
+                                <td>
+                                    <a href="/traitement/deleteT/<%= data[i].idTraitement %>" class="btn btn-danger">Delete</a>
+                                    <a href="/traitement/updateT/<%= data[i].idTraitement %>" class="btn btn-info"> Update</a>
+                                </td>
+                            
+                            </tr>
+                        <% } %>
+                    <% } %>
+                </tbody>
+
+            </table>
+
+            <form action="/traitement/addT" method="post">
+                <div class="form-group">
+                    <input type="text" name="numMed" placeholder="NumMedecin" class="form-control">
+
+                </div>
+                <div class="form-group">
+                    <input type="text" name="numPatient" placeholder="NumPatient" class="form-control">
+
+                </div>
+               
+                
+                <div class="form-group">
+                    <input type="number" name="nbJour" placeholder="nombresJours" class="form-control">
+
+                </div>
+                <div class="form-group">
+                    <input type="date" name="dateConsultation" placeholder="dateduConsultation" class="form-control">
+
+                </div>
+                <button type="submit" class="btn btn-primary">Enregistrement</button>
+            </form>
+
+            
+
+        </body>
+</html>
